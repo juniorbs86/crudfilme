@@ -2,10 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Film;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class FilmController extends Controller
 {
+    private $objUser; //atributos user e film, se trata dos objetos do model
+    private $objFilm;
+
+
+    public function __construct()
+    {
+        $this->objUser=new User(); //objetos vindo do model para trabalhar no banco de dados
+        $this->objFilm=new Film();
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +24,10 @@ class FilmController extends Controller
      */
     public function index()
     {
-        return view ('index');
+
+        $film=$this->objFilm->all();
+        return view('index', compact('film'));
+        //dd($this->objUser->all()->find(1)->relFilm);
     }
 
     /**
