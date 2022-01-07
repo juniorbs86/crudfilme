@@ -59,7 +59,9 @@ class FilmController extends Controller
      */
     public function show($id)
     {
-        //
+
+        $film=$this->objFilm->find($id);
+        return view('show', compact('film'));
     }
 
     /**
