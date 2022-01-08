@@ -1,7 +1,7 @@
 @extends('templates.template')
 
 @section('content')
-    {{-- se existir a vari[avel $film estou no edit senão cadastar --}}
+    {{-- se existir a variáavel $film estou no edit senão vai para cadastar --}}
     <h1 class="text-center">@if (isset($film)) Editar @else Cadastrar @endif</h1>
     <hr>
 
@@ -23,10 +23,14 @@
             @else
         <form name="formCad" id="formCad" method="post" action="{{url('films')}}">
         @endif
+
             @csrf
+
             <input class="form-control" type="text" name="title" id="title" placeholder="titulo:"
                 value="{{$film->title ?? ''}}" required> <br>
+
             <select class="form-control" name="id_user" id="id_user" required> <br>
+                                {{--usando o relacionamento das tabela dos banco de dados--}}
                 <option value="{{$film->relUsers->id ?? ''}}">{{$film->relUsers->name ?? 'Diretor'}}</option>
 
                 @foreach ($users as $user)
@@ -37,8 +41,10 @@
 
             <input class="form-control" type="text" name="series" id="series" placeholder="Series:"
                 value="{{$film->series ?? ''}}" required> <br>
+
             <input class="form-control" type="text" name="price" id="price" placeholder="Preço:"
                 value="{{$film->price ?? ''}}" required> <br>
+
             <input class="btn btn-primary" type="submit" value="@if(isset($film)) Editar @else Cadastrar @endif">
         </form>
     </div>

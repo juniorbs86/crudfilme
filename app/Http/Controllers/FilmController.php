@@ -106,6 +106,7 @@ class FilmController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $del=Film::destroy($id);
+        return($del)?"sim":"não";
     }
 }

@@ -14,7 +14,7 @@
 
     {{-- tabela do bootstrap --}}
     <div class="col-8 m-auto">
-        
+        @csrf
             <table class="table text-center table-dark">
                 <thead class="thead-dark" >
                     <tr>
@@ -47,7 +47,7 @@
                                     <button class="btn btn-primary">Editar</button>
                                 </a>
 
-                                <a href="">
+                                <a href="{{url("films/$films->id")}}" class="js-del">
                                     <button class="btn btn-danger">Deletar</button>
                                 </a>
 
