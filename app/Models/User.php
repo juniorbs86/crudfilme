@@ -43,7 +43,7 @@ class User extends Authenticatable
     ];
 
     //criando medoto de relacionamento entre as tabelas
-    public function relFilm(){ //relacionamento com filmes, hasmany de um para muitos
+    public function relFilms(){ //relacionamento com filmes, hasmany de um para muitos
         return $this->hasMany('App\Models\Film', 'id_user');
     }
 }

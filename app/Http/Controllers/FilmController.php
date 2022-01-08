@@ -8,15 +8,6 @@ use Illuminate\Http\Request;
 
 class FilmController extends Controller
 {
-    private $objUser; //atributos user e film, se trata dos objetos do model
-    private $objFilm;
-
-
-    public function __construct()
-    {
-        $this->objUser=new User(); //objetos vindo do model para trabalhar no banco de dados
-        $this->objFilm=new Film();
-    }
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +16,7 @@ class FilmController extends Controller
     public function index()
     {
 
-        $film=$this->objFilm->all();
+        $film=film::all();
         return view('index', compact('film'));
         //dd($this->objUser->all()->find(1)->relFilm);
     }
@@ -37,7 +28,9 @@ class FilmController extends Controller
      */
     public function create()
     {
-        //
+
+        $users=User::all();
+        return view('create', compact('users'));
     }
 
     /**
@@ -48,7 +41,15 @@ class FilmController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cad=film::create([
+            'title'=>$request->title,
+            'series'=>$request->series,
+            'price'=>$request->price,
+            'id_user'=>$request->id_user
+        ]);
+        if($cad){
+            return redirect('films');
+        }
     }
 
     /**
@@ -60,7 +61,7 @@ class FilmController extends Controller
     public function show($id)
     {
 
-        $film=$this->objFilm->find($id);
+        $film=film::find($id);
         return view('show', compact('film'));
     }
 

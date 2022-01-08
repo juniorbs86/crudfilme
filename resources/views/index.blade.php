@@ -6,7 +6,7 @@
     <hr>
 
     <div class="text-center mt-3 mb-4">
-        <a href="">
+        <a href="{{url('films/create')}}">
             <button class="btn btn-success">Cadastrar</button>
         </a>
 
@@ -30,13 +30,13 @@
                     @foreach ($film as $films)
 
                         @php
-                            $user = $films->find($films->id)->relUsers;
+                            $user=$films->find($films->id)->relUsers;
                         @endphp
                         <tr>
-                            <th scope="row">{{ $films->id }}</th>
-                            <td>{{ $films->title }}</td>
-                            <td>{{ $user->name }}</td>
-                            <td>{{ $films->price }}</td>
+                            <th scope="row">{{$films->id}}</th>
+                            <td>{{$films->title}}</td>
+                            <td>{{$user->name}}</td>
+                            <td>{{$films->price}}</td>
                             <td>
                                 <a href="{{url("films/$films->id")}}">
                                     <button class="btn btn-warning">Visualizar</button>
