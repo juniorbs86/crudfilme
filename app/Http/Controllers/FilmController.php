@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Film;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\FilmRequest;
 
 class FilmController extends Controller
 {
@@ -39,7 +40,7 @@ class FilmController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FilmRequest $request)
     {
         $cad=film::create([
             'title'=>$request->title,
@@ -83,7 +84,7 @@ class FilmController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(FilmRequest $request, $id)
     {
         //
     }
