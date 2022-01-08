@@ -4,7 +4,7 @@
 
     <h1 class="text-center">Filmes</h1>
     <hr>
-
+    {{--url do crud create--}}
     <div class="text-center mt-3 mb-4">
         <a href="{{url('films/create')}}">
             <button class="btn btn-success">Cadastrar</button>
@@ -38,11 +38,12 @@
                             <td>{{$user->name}}</td>
                             <td>{{$films->price}}</td>
                             <td>
+                            {{--url do crud show--}}
                                 <a href="{{url("films/$films->id")}}">
                                     <button class="btn btn-warning">Visualizar</button>
                                 </a>
-
-                                <a href="">
+                                    {{--url do crud edit--}}
+                                <a href="{{url("films/$films->id/edit")}}">
                                     <button class="btn btn-primary">Editar</button>
                                 </a>
 

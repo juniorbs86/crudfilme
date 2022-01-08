@@ -74,7 +74,10 @@ class FilmController extends Controller
      */
     public function edit($id)
     {
-        //
+        $film=film::find($id);
+        $users=User::all();
+        return view('create', compact('film','users'));
+
     }
 
     /**
@@ -86,7 +89,13 @@ class FilmController extends Controller
      */
     public function update(FilmRequest $request, $id)
     {
-        //
+        Film::where(['id'=>$id])->update([
+            'title'=>$request->title,
+            'series'=>$request->series,
+            'price'=>$request->price,
+            'id_user'=>$request->id_user
+        ]);
+        return redirect('films');
     }
 
     /**
