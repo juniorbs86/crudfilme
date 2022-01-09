@@ -1,7 +1,7 @@
 @extends('templates.template')
 
 @section('content')
-    {{-- se existir a variáavel $film estou no edit senão vai para cadastar --}}
+    {{-- se existir a variável $film estou no edit senão vai para cadastar --}}
     <h1 class="text-center">@if (isset($film)) Editar @else Cadastrar @endif</h1>
     <hr>
 

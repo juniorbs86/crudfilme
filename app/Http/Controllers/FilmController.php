@@ -17,7 +17,7 @@ class FilmController extends Controller
     public function index()
     {
 
-        $film=film::all();
+        $film=film::paginate(5);
         return view('index', compact('film'));
         //dd($this->objUser->all()->find(1)->relFilm);
     }
